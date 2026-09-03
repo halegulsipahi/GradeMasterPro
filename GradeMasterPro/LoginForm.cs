@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Data.OleDb;
+using System.Diagnostics.Eventing.Reader;
+using GradeMasterPro.Forms;
 
 namespace GradeMasterPro
 {
@@ -21,6 +24,9 @@ namespace GradeMasterPro
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
+
+        string connectionString = $@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={System.Windows.Forms.Application.StartupPath}\GradeMasterProDB.mdb";
+
         public LoginForm()
         {
             InitializeComponent();
@@ -28,7 +34,7 @@ namespace GradeMasterPro
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.ActiveControl = txtUserNameStudentNumber;
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -72,7 +78,7 @@ namespace GradeMasterPro
 
         }
 
-       
+
         private void pbShowHide_Click_1(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
@@ -88,5 +94,78 @@ namespace GradeMasterPro
         MessageBoxButtons.OK,
         MessageBoxIcon.Information);
         }
-    }
-}
+
+
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string userIdentifier = txtUserNameStudentNumber.Text;
+            string password = txtPassword.Text;
+            String role = null;
+
+            if (userIdentifier != "" && password != "")
+            {
+                using (OleDbConnection con = new OleDbConnection(connectionString))
+                {
+
+                    con.Open();
+
+                    string queryString = "SELECT * FROM Students WHERE StudentNumber = @StudentNumber AND [Password]=@Password";
+
+                    using (OleDbCommand cmd = new OleDbCommand(queryString, con))
+                    {
+                        cmd.Parameters.AddWithValue("@StdNumber", userIdentifier);
+                        cmd.Parameters.AddWithValue("Password", password);
+
+                        using (OleDbDataReader reader = cmd.ExecuteReader())
+
+                            if (reader.Read())
+                            {
+                                role = "Student";
+
+                                StudentForm stdForm = new StudentForm();
+                                this.Hide();
+                                stdForm.ShowDialog();
+
+                            }
+
+                    }
+                    if (role == null)
+                    {
+                        string queryInstructor = "SELECT * FROM Instructors WHERE UserName=@userName AND [Password]=@password";
+
+                        using (OleDbCommand cmd = new OleDbCommand(queryInstructor, con))
+                        {
+                            cmd.Parameters.AddWithValue("@userName", userIdentifier);
+                            cmd.Parameters.AddWithValue("Password", password);
+
+
+                            using (OleDbDataReader reader = cmd.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    role = "Instructor";
+                                   
+                                    InstructorForm instForm = new InstructorForm();
+                                    this.Hide();
+                                    instForm.ShowDialog();
+                                }
+                            }
+
+                        }
+                    }
+
+                    if (role == null)
+                    {
+                        MessageBox.Show("User not found, please try again!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                }
+            }
+            else
+                MessageBox.Show("Please fill in your login information completely.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+        }
+    
