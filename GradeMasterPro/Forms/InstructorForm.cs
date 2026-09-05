@@ -86,7 +86,7 @@ namespace GradeMasterPro.Forms
                         if (dr.Read())
                         {
                             lblInstructor.Text = dr["FirstName"].ToString() + " " + dr["SecondName"].ToString();
-                          
+
                         }
 
                     }
@@ -103,7 +103,7 @@ namespace GradeMasterPro.Forms
                             currentCourseName = dr["CourseName"].ToString();
                             lblInstCourse.Text = currentCourseName;
                             lblCourseTitle.Text = "Course: " + currentCourseName;
-                           
+
                         }
 
 
@@ -238,7 +238,37 @@ namespace GradeMasterPro.Forms
                     {
                         cmd.Parameters.AddWithValue("@cId", currentCourseId);
                         int failedCount = Convert.ToInt32(cmd.ExecuteScalar());
-                        lblNumberOfFail.Text = "Number of Failing Students:" + failedCount.ToString();
+                        lblNumberOfFail.Text = "Number of Failing Students: " + failedCount.ToString();
+                    }
+
+                    string queryGrades = "SELECT [Average] from Grades where CourseID=@cId";
+                    using (OleDbCommand cmd = new OleDbCommand(queryGrades, con))
+                    {
+                        cmd.Parameters.AddWithValue("@cId", currentCourseId);
+                        using (OleDbDataReader dr = cmd.ExecuteReader())
+                        {
+                            double total = 0;
+                            int count = 0;
+                            while (dr.Read())
+                            {
+                                if (dr["Average"] != DBNull.Value)
+                                {
+                                    total += Convert.ToDouble(dr["Average"].ToString());
+                                    count++;
+                                }
+                            }
+                            if (count > 0)
+                            {
+                                double avg = total / count;
+                                lblClassAverage.Text = "Class Average: " + avg.ToString("0.00");
+                            }
+                            else
+                            {
+                                lblClassAverage.Text = "Class Average: 0.00";
+                            }
+
+                        }
+
                     }
                 }
             }
@@ -246,10 +276,11 @@ namespace GradeMasterPro.Forms
             {
                 {
                     MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                   
+
                 }
             }
         }
+
         private void pbExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
@@ -439,6 +470,6 @@ namespace GradeMasterPro.Forms
             LoadReports();
         }
 
-      
+
     }
 }
