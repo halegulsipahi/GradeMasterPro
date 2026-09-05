@@ -45,19 +45,19 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.pbShowHide = new System.Windows.Forms.PictureBox();
             this.lnkForgotPassword = new System.Windows.Forms.LinkLabel();
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
-            this.pbExit = new System.Windows.Forms.PictureBox();
             this.pbUser = new System.Windows.Forms.PictureBox();
+            this.pbExit = new System.Windows.Forms.PictureBox();
+            this.pbBack = new System.Windows.Forms.PictureBox();
+            this.pbShowHide = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGithub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSupport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBrandLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbShowHide)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbShowHide)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -222,6 +222,7 @@
             this.txtUserNameStudentNumber.Name = "txtUserNameStudentNumber";
             this.txtUserNameStudentNumber.Size = new System.Drawing.Size(297, 31);
             this.txtUserNameStudentNumber.TabIndex = 4;
+//            this.txtUserNameStudentNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserNameStudentNumber_KeyDown);
             // 
             // txtPassword
             // 
@@ -262,19 +263,6 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // pbShowHide
-            // 
-            this.pbShowHide.BackColor = System.Drawing.Color.Transparent;
-            this.pbShowHide.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbShowHide.Image = ((System.Drawing.Image)(resources.GetObject("pbShowHide.Image")));
-            this.pbShowHide.Location = new System.Drawing.Point(593, 303);
-            this.pbShowHide.Name = "pbShowHide";
-            this.pbShowHide.Size = new System.Drawing.Size(27, 31);
-            this.pbShowHide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbShowHide.TabIndex = 8;
-            this.pbShowHide.TabStop = false;
-            this.pbShowHide.Click += new System.EventHandler(this.pbShowHide_Click_1);
-            // 
             // lnkForgotPassword
             // 
             this.lnkForgotPassword.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
@@ -293,18 +281,16 @@
             this.lnkForgotPassword.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(190)))), ((int)(((byte)(210)))));
             this.lnkForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkForgotPassword_LinkClicked);
             // 
-            // pbMinimize
+            // pbUser
             // 
-            this.pbMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = ((System.Drawing.Image)(resources.GetObject("pbMinimize.Image")));
-            this.pbMinimize.Location = new System.Drawing.Point(685, 10);
-            this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(24, 24);
-            this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbMinimize.TabIndex = 10;
-            this.pbMinimize.TabStop = false;
-            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
+            this.pbUser.BackColor = System.Drawing.Color.Transparent;
+            this.pbUser.Image = ((System.Drawing.Image)(resources.GetObject("pbUser.Image")));
+            this.pbUser.Location = new System.Drawing.Point(371, 33);
+            this.pbUser.Name = "pbUser";
+            this.pbUser.Size = new System.Drawing.Size(145, 90);
+            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbUser.TabIndex = 12;
+            this.pbUser.TabStop = false;
             // 
             // pbExit
             // 
@@ -319,16 +305,31 @@
             this.pbExit.TabStop = false;
             this.pbExit.Click += new System.EventHandler(this.pbExit_Click);
             // 
-            // pbUser
+            // pbBack
             // 
-            this.pbUser.BackColor = System.Drawing.Color.Transparent;
-            this.pbUser.Image = ((System.Drawing.Image)(resources.GetObject("pbUser.Image")));
-            this.pbUser.Location = new System.Drawing.Point(371, 33);
-            this.pbUser.Name = "pbUser";
-            this.pbUser.Size = new System.Drawing.Size(145, 90);
-            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbUser.TabIndex = 12;
-            this.pbUser.TabStop = false;
+            this.pbBack.BackColor = System.Drawing.Color.Transparent;
+            this.pbBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbBack.Image = ((System.Drawing.Image)(resources.GetObject("pbBack.Image")));
+            this.pbBack.Location = new System.Drawing.Point(685, 10);
+            this.pbBack.Name = "pbBack";
+            this.pbBack.Size = new System.Drawing.Size(24, 24);
+            this.pbBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbBack.TabIndex = 10;
+            this.pbBack.TabStop = false;
+            this.pbBack.Click += new System.EventHandler(this.pbMinimize_Click);
+            // 
+            // pbShowHide
+            // 
+            this.pbShowHide.BackColor = System.Drawing.Color.Transparent;
+            this.pbShowHide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbShowHide.Image = ((System.Drawing.Image)(resources.GetObject("pbShowHide.Image")));
+            this.pbShowHide.Location = new System.Drawing.Point(593, 303);
+            this.pbShowHide.Name = "pbShowHide";
+            this.pbShowHide.Size = new System.Drawing.Size(27, 31);
+            this.pbShowHide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbShowHide.TabIndex = 8;
+            this.pbShowHide.TabStop = false;
+            this.pbShowHide.Click += new System.EventHandler(this.pbShowHide_Click_1);
             // 
             // LoginForm
             // 
@@ -339,7 +340,7 @@
             this.Controls.Add(this.lblLoginTitle);
             this.Controls.Add(this.pbUser);
             this.Controls.Add(this.pbExit);
-            this.Controls.Add(this.pbMinimize);
+            this.Controls.Add(this.pbBack);
             this.Controls.Add(this.lnkForgotPassword);
             this.Controls.Add(this.pbShowHide);
             this.Controls.Add(this.btnLogin);
@@ -356,16 +357,16 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbGithub)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSupport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBrandLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbShowHide)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbShowHide)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,7 +392,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pbShowHide;
         private System.Windows.Forms.LinkLabel lnkForgotPassword;
-        private System.Windows.Forms.PictureBox pbMinimize;
+        private System.Windows.Forms.PictureBox pbBack;
         private System.Windows.Forms.PictureBox pbExit;
         private System.Windows.Forms.PictureBox pbUser;
     }

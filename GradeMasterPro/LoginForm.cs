@@ -32,12 +32,12 @@ namespace GradeMasterPro
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtUserNameStudentNumber;
         }
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        private void LoginForm_MouseDown(object sender, MouseEventArgs e)
         {
 
             if (e.Button == MouseButtons.Left)
@@ -145,8 +145,9 @@ namespace GradeMasterPro
                                 if (reader.Read())
                                 {
                                     role = "Instructor";
+                                    string instId =reader["InstructorID"].ToString();
                                    
-                                    InstructorForm instForm = new InstructorForm();
+                                    InstructorForm instForm = new InstructorForm(instId);
                                     this.Hide();
                                     instForm.ShowDialog();
                                 }
@@ -166,6 +167,8 @@ namespace GradeMasterPro
                 MessageBox.Show("Please fill in your login information completely.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-            }
+
+     
+    }
         }
     
