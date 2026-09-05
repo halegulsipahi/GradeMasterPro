@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstructorForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pbExit = new System.Windows.Forms.PictureBox();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -77,6 +77,15 @@
             this.btnAddNew = new System.Windows.Forms.Button();
             this.dgwAllStudents = new System.Windows.Forms.DataGridView();
             this.pbBack = new System.Windows.Forms.PictureBox();
+            this.pnlReports = new System.Windows.Forms.Panel();
+            this.lblTotalStudents = new System.Windows.Forms.Label();
+            this.lblTotalInstructors = new System.Windows.Forms.Label();
+            this.lblTotalCourse = new System.Windows.Forms.Label();
+            this.lblNumberOfSuccessful = new System.Windows.Forms.Label();
+            this.lblNumberOfFail = new System.Windows.Forms.Label();
+            this.lblReportsCourseName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblInstCourse = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             this.panel1.SuspendLayout();
@@ -95,6 +104,8 @@
             this.pnlViewStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwAllStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBack)).BeginInit();
+            this.pnlReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pbExit
@@ -143,6 +154,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.lblInstCourse);
             this.panel2.Controls.Add(this.btnViewStudent);
             this.panel2.Controls.Add(this.btnReports);
             this.panel2.Controls.Add(this.lblInstructor);
@@ -187,6 +199,7 @@
             this.btnReports.TabIndex = 17;
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = false;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // lblInstructor
             // 
@@ -368,6 +381,7 @@
             // 
             // pnlMainContainer
             // 
+            this.pnlMainContainer.Controls.Add(this.pnlReports);
             this.pnlMainContainer.Controls.Add(this.pnlUpdateGrade);
             this.pnlMainContainer.Controls.Add(this.pnlViewStudent);
             this.pnlMainContainer.Location = new System.Drawing.Point(223, 65);
@@ -384,7 +398,7 @@
             this.pnlUpdateGrade.Controls.Add(this.label3);
             this.pnlUpdateGrade.Location = new System.Drawing.Point(0, 0);
             this.pnlUpdateGrade.Name = "pnlUpdateGrade";
-            this.pnlUpdateGrade.Size = new System.Drawing.Size(635, 413);
+            this.pnlUpdateGrade.Size = new System.Drawing.Size(633, 413);
             this.pnlUpdateGrade.TabIndex = 1;
             this.pnlUpdateGrade.Visible = false;
             // 
@@ -637,23 +651,23 @@
             this.dgwAllStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgwAllStudents.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.dgwAllStudents.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwAllStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwAllStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgwAllStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(47)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwAllStudents.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(47)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwAllStudents.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgwAllStudents.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwAllStudents.EnableHeadersVisualStyles = false;
             this.dgwAllStudents.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
@@ -678,6 +692,107 @@
             this.pbBack.TabStop = false;
             this.pbBack.Click += new System.EventHandler(this.pbBack_Click);
             // 
+            // pnlReports
+            // 
+            this.pnlReports.Controls.Add(this.pictureBox1);
+            this.pnlReports.Controls.Add(this.lblReportsCourseName);
+            this.pnlReports.Controls.Add(this.lblNumberOfFail);
+            this.pnlReports.Controls.Add(this.lblNumberOfSuccessful);
+            this.pnlReports.Controls.Add(this.lblTotalCourse);
+            this.pnlReports.Controls.Add(this.lblTotalInstructors);
+            this.pnlReports.Controls.Add(this.lblTotalStudents);
+            this.pnlReports.Location = new System.Drawing.Point(0, 0);
+            this.pnlReports.Name = "pnlReports";
+            this.pnlReports.Size = new System.Drawing.Size(632, 413);
+            this.pnlReports.TabIndex = 7;
+            this.pnlReports.Visible = false;
+            // 
+            // lblTotalStudents
+            // 
+            this.lblTotalStudents.AutoSize = true;
+            this.lblTotalStudents.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTotalStudents.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTotalStudents.Location = new System.Drawing.Point(42, 24);
+            this.lblTotalStudents.Name = "lblTotalStudents";
+            this.lblTotalStudents.Size = new System.Drawing.Size(174, 20);
+            this.lblTotalStudents.TabIndex = 0;
+            this.lblTotalStudents.Text = "Total Student Number: ";
+            // 
+            // lblTotalInstructors
+            // 
+            this.lblTotalInstructors.AutoSize = true;
+            this.lblTotalInstructors.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTotalInstructors.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTotalInstructors.Location = new System.Drawing.Point(42, 78);
+            this.lblTotalInstructors.Name = "lblTotalInstructors";
+            this.lblTotalInstructors.Size = new System.Drawing.Size(189, 20);
+            this.lblTotalInstructors.TabIndex = 1;
+            this.lblTotalInstructors.Text = "Total Instructor Number: ";
+            // 
+            // lblTotalCourse
+            // 
+            this.lblTotalCourse.AutoSize = true;
+            this.lblTotalCourse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTotalCourse.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTotalCourse.Location = new System.Drawing.Point(42, 132);
+            this.lblTotalCourse.Name = "lblTotalCourse";
+            this.lblTotalCourse.Size = new System.Drawing.Size(167, 20);
+            this.lblTotalCourse.TabIndex = 2;
+            this.lblTotalCourse.Text = "Total Course Number: ";
+            // 
+            // lblNumberOfSuccessful
+            // 
+            this.lblNumberOfSuccessful.AutoSize = true;
+            this.lblNumberOfSuccessful.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblNumberOfSuccessful.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblNumberOfSuccessful.Location = new System.Drawing.Point(42, 301);
+            this.lblNumberOfSuccessful.Name = "lblNumberOfSuccessful";
+            this.lblNumberOfSuccessful.Size = new System.Drawing.Size(230, 20);
+            this.lblNumberOfSuccessful.TabIndex = 3;
+            this.lblNumberOfSuccessful.Text = "Number of successful students:";
+            // 
+            // lblNumberOfFail
+            // 
+            this.lblNumberOfFail.AutoSize = true;
+            this.lblNumberOfFail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblNumberOfFail.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblNumberOfFail.Location = new System.Drawing.Point(42, 341);
+            this.lblNumberOfFail.Name = "lblNumberOfFail";
+            this.lblNumberOfFail.Size = new System.Drawing.Size(203, 20);
+            this.lblNumberOfFail.TabIndex = 4;
+            this.lblNumberOfFail.Text = "Number of failing students:";
+            // 
+            // lblReportsCourseName
+            // 
+            this.lblReportsCourseName.AutoSize = true;
+            this.lblReportsCourseName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblReportsCourseName.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.lblReportsCourseName.Location = new System.Drawing.Point(42, 258);
+            this.lblReportsCourseName.Name = "lblReportsCourseName";
+            this.lblReportsCourseName.Size = new System.Drawing.Size(0, 23);
+            this.lblReportsCourseName.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(451, 205);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(165, 156);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblInstCourse
+            // 
+            this.lblInstCourse.AutoSize = true;
+            this.lblInstCourse.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblInstCourse.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblInstCourse.Location = new System.Drawing.Point(69, 210);
+            this.lblInstCourse.Name = "lblInstCourse";
+            this.lblInstCourse.Size = new System.Drawing.Size(61, 17);
+            this.lblInstCourse.TabIndex = 18;
+            this.lblInstCourse.Text = "Course: -";
+            // 
             // InstructorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -694,11 +809,13 @@
             this.Name = "InstructorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InstructorForm";
+//            this.Load += new System.EventHandler(this.InstructorForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.InstructorForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGithubInst)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -717,6 +834,9 @@
             this.pnlViewStudent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwAllStudents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBack)).EndInit();
+            this.pnlReports.ResumeLayout(false);
+            this.pnlReports.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -773,5 +893,14 @@
         private System.Windows.Forms.TextBox txtNewGrade2;
         private System.Windows.Forms.TextBox txtNewGrade1;
         private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.Panel pnlReports;
+        private System.Windows.Forms.Label lblTotalCourse;
+        private System.Windows.Forms.Label lblTotalInstructors;
+        private System.Windows.Forms.Label lblTotalStudents;
+        private System.Windows.Forms.Label lblReportsCourseName;
+        private System.Windows.Forms.Label lblNumberOfFail;
+        private System.Windows.Forms.Label lblNumberOfSuccessful;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblInstCourse;
     }
 }

@@ -41,7 +41,10 @@ namespace GradeMasterPro.Forms
         private void LoadDataToDataGridView()
         {
             pnlUpdateGrade.Visible = false;
+            pnlReports.Visible = false;
             pnlViewStudent.Visible = true;
+            pnlViewStudent.BringToFront();
+
             string query = "select StudentID,FirstName,SecondName,StudentNumber from Students";
 
             try
@@ -83,6 +86,7 @@ namespace GradeMasterPro.Forms
                         if (dr.Read())
                         {
                             lblInstructor.Text = dr["FirstName"].ToString() + " " + dr["SecondName"].ToString();
+                          
                         }
 
                     }
@@ -97,8 +101,9 @@ namespace GradeMasterPro.Forms
                         {
                             currentCourseId = dr["CourseID"].ToString();
                             currentCourseName = dr["CourseName"].ToString();
-
+                            lblInstCourse.Text = currentCourseName;
                             lblCourseTitle.Text = "Course: " + currentCourseName;
+                           
                         }
 
 
@@ -165,6 +170,7 @@ namespace GradeMasterPro.Forms
         private void UpdateGrades()
         {
             pnlViewStudent.Visible = false;
+            pnlReports.Visible = false;
             pnlUpdateGrade.Visible = true;
 
 
@@ -186,6 +192,64 @@ namespace GradeMasterPro.Forms
             lblInfo.Text = "Update Grade";
         }
 
+        private void LoadReports()
+        {
+            pnlViewStudent.Visible = false;
+            pnlUpdateGrade.Visible = false;
+            pnlReports.Visible = true;
+            pnlReports.BringToFront();
+            lblInfo.Text = "Reports && Analytics";
+
+            try
+            {
+                using (OleDbConnection con = new OleDbConnection(connectionString))
+                {
+                    con.Open();
+                    using (OleDbCommand cmd = new OleDbCommand("Select Count(*) from Students", con))
+                    {
+                        int totalStudents = Convert.ToInt32(cmd.ExecuteScalar());
+                        lblTotalStudents.Text = "Total Student Number: " + totalStudents.ToString();
+                    }
+
+                    using (OleDbCommand cmd = new OleDbCommand("Select Count(*) from Instructors", con))
+                    {
+                        int totalInstructor = Convert.ToInt32(cmd.ExecuteScalar());
+                        lblTotalInstructors.Text = "Total Instructor Number: " + totalInstructor.ToString();
+                    }
+
+                    using (OleDbCommand cmd = new OleDbCommand("Select Count(*) from Courses", con))
+                    {
+                        int totalCourses = Convert.ToInt32(cmd.ExecuteScalar());
+                        lblTotalCourse.Text = "Total Course Number: " + totalCourses.ToString();
+                    }
+
+                    lblReportsCourseName.Text = "Course: " + currentCourseName;
+
+                    string queryPassed = "SELECT COUNT(*) FROM Grades WHERE CourseID=@cId AND Average>=50";
+                    using (OleDbCommand cmd = new OleDbCommand(queryPassed, con))
+                    {
+                        cmd.Parameters.AddWithValue("@cId", currentCourseId);
+                        int passedCount = Convert.ToInt32(cmd.ExecuteScalar());
+                        lblNumberOfSuccessful.Text = "Number of Successfull Students: " + passedCount.ToString();
+                    }
+
+                    string queryFailed = "SELECT COUNT(*) FROM Grades WHERE CourseID=@cId AND Average<50";
+                    using (OleDbCommand cmd = new OleDbCommand(queryFailed, con))
+                    {
+                        cmd.Parameters.AddWithValue("@cId", currentCourseId);
+                        int failedCount = Convert.ToInt32(cmd.ExecuteScalar());
+                        lblNumberOfFail.Text = "Number of Failing Students:" + failedCount.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                {
+                    MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   
+                }
+            }
+        }
         private void pbExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
@@ -276,7 +340,7 @@ namespace GradeMasterPro.Forms
                 return;
             }
             int g1 = Convert.ToInt32(txtNewGrade1.Text);
-            int g2= Convert.ToInt32(txtNewGrade2.Text);
+            int g2 = Convert.ToInt32(txtNewGrade2.Text);
 
 
             if (g1 < 0 || g1 > 100 || g2 < 0 || g2 > 100)
@@ -369,6 +433,12 @@ namespace GradeMasterPro.Forms
 
         }
 
+        private void btnReports_Click(object sender, EventArgs e)
+        {
 
+            LoadReports();
+        }
+
+      
     }
 }
