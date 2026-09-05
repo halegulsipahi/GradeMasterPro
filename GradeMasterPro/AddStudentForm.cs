@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GradeMasterPro.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -92,6 +93,11 @@ namespace GradeMasterPro
                 MessageBox.Show("Error adding student: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void pbBack_Click(object sender, EventArgs e)
+        { 
+            this.Close();
         }
     }
 }

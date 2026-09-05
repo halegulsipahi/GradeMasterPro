@@ -222,7 +222,7 @@
             this.txtUserNameStudentNumber.Name = "txtUserNameStudentNumber";
             this.txtUserNameStudentNumber.Size = new System.Drawing.Size(297, 31);
             this.txtUserNameStudentNumber.TabIndex = 4;
-//            this.txtUserNameStudentNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserNameStudentNumber_KeyDown);
+//            this.txtUserNameStudentNumber.TextChanged += new System.EventHandler(this.txtUserNameStudentNumber_TextChanged);
             // 
             // txtPassword
             // 

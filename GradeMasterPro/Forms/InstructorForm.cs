@@ -470,6 +470,5 @@ namespace GradeMasterPro.Forms
             LoadReports();
         }
 
-
     }
 }

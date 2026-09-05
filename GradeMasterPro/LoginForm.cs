@@ -114,7 +114,7 @@ namespace GradeMasterPro
 
                     using (OleDbCommand cmd = new OleDbCommand(queryString, con))
                     {
-                        cmd.Parameters.AddWithValue("@StdNumber", userIdentifier);
+                        cmd.Parameters.AddWithValue("@StudentNumber", userIdentifier);
                         cmd.Parameters.AddWithValue("Password", password);
 
                         using (OleDbDataReader reader = cmd.ExecuteReader())
@@ -123,7 +123,7 @@ namespace GradeMasterPro
                             {
                                 role = "Student";
 
-                                StudentForm stdForm = new StudentForm();
+                                StudentForm stdForm = new StudentForm(userIdentifier);
                                 this.Hide();
                                 stdForm.ShowDialog();
 
@@ -168,7 +168,8 @@ namespace GradeMasterPro
                     return;
                 }
 
-     
+ 
+      
     }
         }
     
