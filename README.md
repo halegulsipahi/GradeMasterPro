@@ -1,6 +1,6 @@
 # GradeMasterPro 🎓
 
-An enterprise-inspired Academic Performance & Student Evaluation desktop system built with **C# (.NET Windows Forms)** and **Microsoft Access (OleDb)**. Designed around a dual-role authentication model (Instructor & Student), real-time relational data synchronization, dynamic GPA calculation, and aggregate statistical reporting.
+An modular Academic Performance & Student Evaluation desktop application built with **C# (.NET Windows Forms)** and **Microsoft Access (OleDb)**. Designed around a dual-role authentication model (Instructor & Student), real-time relational data synchronization, dynamic GPA calculation, and aggregate statistical reporting.
 
 <div align="center">
   <img src="Screenshots/instructor-demo.gif" alt="GradeMasterPro Showcase" width="850"/>
