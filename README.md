@@ -41,7 +41,6 @@ An modular Academic Performance & Student Evaluation desktop application built w
 * **Language & Framework:** C# (.NET Framework / Windows Forms)
 * **Database Engine:** Microsoft Access (`.mdb` via `System.Data.OleDb`)
 * **Security & Reliability:** Fully parameterized SQL queries preventing SQL injection, coupled with defensive data validation.
-* **Native API Interop:** Win32 API calls for non-standard borderless form dragging and window handling.
 
 ---
 
